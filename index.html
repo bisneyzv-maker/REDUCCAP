@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reduccap - Soluciones capilares y moldeo térmico avanzado para hombres y mujeres.">
+    <title>Reduccap | Expertos en Imagen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon: #e2ff00;
+            --black: #000000;
+            --card-bg: #111111;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--black);
+            color: white;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+        header {
+            padding: 40px 20px;
+            text-align: center;
+            background: var(--black);
+        }
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            margin: 0;
+            letter-spacing: -3px;
+            text-transform: uppercase;
+        }
+        .subtitle {
+            color: var(--neon);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 28px;
+            margin-bottom: 40px;
+            border: 1px solid #222;
+            overflow: hidden;
+            position: relative;
+        }
+        .img-box {
+            width: 100%;
+            background: #1a1a1a;
+        }
+        .img-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .unisex-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--neon);
+            color: black;
+            padding: 5px 12px;
+            font-weight: 900;
+            font-size: 0.7rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            z-index: 10;
+        }
+        .info {
+            padding: 30px;
+        }
+        .p-name {
+            font-size: 1.7rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--neon);
+        }
+        .p-desc {
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+            font-size: 0.85rem;
+            color: #999;
+        }
+        .features li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+        .features li::before {
+            content: "✔";
+            color: var(--neon);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .cta {
+            display: block;
+            background: var(--neon);
+            color: black;
+            text-align: center;
+            text-decoration: none;
+            padding: 20px;
+            border-radius: 18px;
+            font-weight: 900;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        .cta:active {
+            transform: scale(0.98);
+        }
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            color: #444;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>REDUCCAP</h1>
+        <div class="subtitle">Soluciones de alto impacto para ella y él</div>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <span class="unisex-badge">Dama & Caballero</span>
+            <div class="img-box"><img src="1000578020.jpg" alt="Bunee"></div>
+            <div class="info">
+                <div class="p-name">Bunee Hairline</div>
+                <p class="p-desc">Perfección inmediata. Diseñado para tapar canas y cubrir espacios sin cabello con un acabado natural e indetectable.</p>
+                <ul class="features">
+                    <li>Acabado profesional</li>
+                    <li>Resistente al sudor y agua</li>
+                    <li>Aplicación en segundos</li>
+                </ul>
+                <a href="#" class="cta" onclick="handleSale('Bunee Hairline')">Pedir vía WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="unisex-badge">Dama & Caballero</span>
+            <div class="img-box"><img src="1000572275.jpg" alt="Toppik"></div>
+            <div class="info">
+                <div class="p-name">Toppik Fibers</div>
+                <p class="p-desc">Densidad total al instante. Fibras de queratina que se adhieren magnéticamente para dar volumen a cabello y barba.</p>
+                <ul class="features">
+                    <li>Resiste viento, lluvia y sudor</li>
+                    <li>Efecto 100% natural</li>
+                    <li>Para entradas y coronilla</li>
+                </ul>
+                <a href="#" class="cta" onclick="handleSale('Kits Toppik')">Ver Kits Disponibles</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="unisex-badge">Dama & Caballero</span>
+            <div class="img-box"><img src="1000578022.jpg" alt="Faja"></div>
+            <div class="info">
+                <div class="p-name">Faja Térmica</div>
+                <p class="p-desc">Neopreno 100% original. Aumenta tu temperatura corporal 4 veces más y moldea tu figura mientras corrige la postura.</p>
+                <ul class="features">
+                    <li>Reduce tallas rápidamente</li>
+                    <li>Soporte lumbar avanzado</li>
+                    <li>Material de alta resistencia</li>
+                </ul>
+                <a href="#" class="cta" onclick="handleSale('Faja Termica')">Consultar Talla</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>REDUCCAP &copy; 2026</footer>
+
+    <script>
+        const API_DATA = {
+            // REEMPLAZA LOS CEROS CON TU NÚMERO DE TELÉFONO REAL
+            phone: "573052958963", 
+            hook: "https://automatizaciones-n8n.qtnnm3.easypanel.host/webhook/interaccion-web"
+        };
+
+        function handleSale(p) {
+            fetch(API_DATA.hook); 
+            const m = encodeURIComponent(`¡Hola Reduccap! Me interesa el producto: ${p}. ¿Me das información de precios?`);
+            window.open(`https://wa.me/${API_DATA.phone}?text=${m}`, '_blank');
+        }
+    </script>
+</body>
+</html>
