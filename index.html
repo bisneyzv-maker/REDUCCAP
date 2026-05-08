@@ -202,7 +202,7 @@
             window.open(`https://wa.me/${API_DATA.phone}?text=${m}`, '_blank');
         }
     </script>
-    <div id="float-form-container">
+<div id="float-form-container">
     <button id="open-form-btn">
         <span class="icon">💬</span> Pide tu asesoría gratuita
     </button>
@@ -231,19 +231,18 @@
             <div class="input-group">
                 <label>Producto de interés</label>
                 <select id="product" name="product">
-                    <option value="reducap-classic">Reducap Classic</option>
-                    <option value="reducap-premium">Reducap Premium</option>
-                    <option value="otro">Otro / Consulta general</option>
+                    <option value="fibra-capilar">Fibra capilar</option>
+                    <option value="bunee">Bunee</option>
+                    <option value="chaleco-termico">Chaleco térmico</option>
                 </select>
             </div>
 
-            <button type="submit" id="submit-btn">Enviar pedido contra entrega</button>
+            <button type="submit" id="submit-btn">Enviar</button>
         </form>
     </div>
 </div>
 
 <style>
-    /* Estilos del Contenedor */
     #float-form-container {
         position: fixed;
         bottom: 20px;
@@ -252,9 +251,8 @@
         font-family: 'Segoe UI', Arial, sans-serif;
     }
 
-    /* Botón Flotante */
     #open-form-btn {
-        background-color: #25d366; /* Verde WhatsApp */
+        background-color: #25d366;
         color: white;
         border: none;
         padding: 12px 20px;
@@ -270,7 +268,6 @@
 
     #open-form-btn:hover { transform: scale(1.05); }
 
-    /* Caja del Formulario */
     #floating-form {
         position: absolute;
         bottom: 70px;
@@ -285,7 +282,6 @@
 
     .hidden { display: none; opacity: 0; transform: translateY(20px); }
 
-    /* Encabezado del Form */
     .form-header {
         background: #2c3e50;
         color: white;
@@ -305,7 +301,6 @@
         cursor: pointer;
     }
 
-    /* Campos de entrada */
     #contact-form { padding: 20px; }
     .input-group { margin-bottom: 15px; }
     .input-group label { display: block; font-size: 12px; margin-bottom: 5px; color: #666; }
@@ -317,10 +312,9 @@
         box-sizing: border-box;
     }
 
-    /* Botón Enviar */
     #submit-btn {
         width: 100%;
-        background: #e74c3c; /* Color llamativo para pedidos */
+        background: #e74c3c;
         color: white;
         border: none;
         padding: 10px;
@@ -337,28 +331,27 @@
     const closeBtn = document.getElementById('close-form-btn');
     const formBox = document.getElementById('floating-form');
 
-    // Abrir y cerrar
     openBtn.addEventListener('click', () => {
         formBox.classList.toggle('hidden');
+        if (!formBox.classList.contains('hidden')) {
+            formBox.style.opacity = "1";
+            formBox.style.transform = "translateY(0)";
+        }
     });
 
     closeBtn.addEventListener('click', () => {
         formBox.classList.add('hidden');
     });
 
-    // Acción al enviar
     document.getElementById('contact-form').addEventListener('submit', function(e) {
         e.preventDefault();
-        
-        // Aquí puedes conectar esto con n8n o recibirlo por WhatsApp
         const nombre = document.getElementById('fname').value;
         const phone = document.getElementById('whatsapp').value;
         const ciudad = document.getElementById('city').value;
         const prod = document.getElementById('product').value;
 
-        alert(`¡Gracias ${nombre}! Hemos recibido tu pedido para ${ciudad}. Nos contactaremos al ${phone}.`);
+        alert(`¡Gracias ${nombre}! Hemos recibido tu interés en ${prod} para la ciudad de ${ciudad}. Nos contactaremos al ${phone}.`);
         
-        // Limpiar y cerrar
         this.reset();
         formBox.classList.add('hidden');
     });
