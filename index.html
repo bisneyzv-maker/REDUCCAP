@@ -350,8 +350,10 @@
         const ciudad = document.getElementById('city').value;
         const prod = document.getElementById('product').value;
 
-        alert(`¡Gracias ${nombre}! Hemos recibido tu interés en ${prod} para la ciudad de ${ciudad}. Nos contactaremos al ${phone}.`);
-        window.open("https://t.me/Reduccap", "_blank");
+              // 1. Solo confirmamos al usuario que recibimos todo
+        alert(¡Gracias ${nombre}! Hemos recibido tu interés en ${prod}. Pronto nos comunicaremos al ${phone}.);
+        
+        // 2. Aquí es donde n8n hará su magia más adelante (el envío invisible)
         this.reset();
         formBox.classList.add('hidden');
     });
