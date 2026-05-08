@@ -343,7 +343,18 @@
         formBox.classList.add('hidden');
     });
 
-   document.getElementById('contact-form').addEventListener('submit', function(e) {
+  // Abrir formulario
+    openBtn.addEventListener('click', () => {
+        formBox.classList.toggle('hidden');
+    });
+
+    // Cerrar formulario
+    closeBtn.addEventListener('click', () => {
+        formBox.classList.add('hidden');
+    });
+
+    // Enviar datos a n8n
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
         e.preventDefault();
         
         const nombre = document.getElementById('fname').value;
@@ -351,31 +362,23 @@
         const ciudad = document.getElementById('city').value;
         const prod = document.getElementById('product').value;
 
-        // URL de tu Webhook de n8n (tomada de tu imagen)
         const webhookUrl = "https://automatizaciones-n8n.qtnnm3.easypanel.host/webhook-test/43a3956f-e206-4dfb-8f5b-1afb924a0956";
 
-        // Enviando los datos a n8n de forma invisible
         fetch(webhookUrl, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            mode: 'no-cors', 
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 cliente: nombre,
                 telefono: phone,
                 ubicacion: ciudad,
-                articulo: prod,
-                fuente: "Landing Reducap"
-           }) // Cierra el cuerpo del fetch
-        .then(() => {
-            alert(`¡Gracias ${nombre}! Hemos recibido tu pedido para ${ciudad}.`);
-            this.reset();
-            formBox.classList.add('hidden');
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert("Hubo un error al enviar. Intenta de nuevo.");
+                articulo: prod
+            })
         });
+
+        alert(¡Gracias ${nombre}! Hemos recibido tu pedido para ${ciudad}.);
+        this.reset();
+        formBox.classList.add('hidden');
     });
 </script>
     <div id="social-contact-container">
