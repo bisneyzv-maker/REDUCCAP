@@ -357,7 +357,6 @@
         // Enviando los datos a n8n de forma invisible
         fetch(webhookUrl, {
             method: 'POST',
-            mode: 'no-cors', // Para evitar problemas de permisos iniciales
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -369,13 +368,19 @@
                 fuente: "Landing Reducap"
             })
         });
-
-        // Mensaje para el cliente
-        alert(¡Gracias ${nombre}! Hemos recibido tu pedido para ${ciudad}. Nos contactaremos al ${phone} pronto.);
-        
-        // Limpiar y cerrar el formulario
-        this.reset();
-        formBox.classList.add('hidden');
+       .then((()=>{
+        })
+        })
+        .then(() => {
+            // Esto asegura que el mensaje salga DESPUÉS de enviar los datos
+            alert(¡Gracias ${nombre}! Hemos recibido tu pedido para ${ciudad}.);
+            this.reset();
+            formBox.classList.add('hidden');
+        })
+        .catch(error => {
+            // Por si hay un error en la conexión
+            console.error('Error:', error);
+            alert("Hubo un error al enviar. Intenta de nuevo.");
     });
     });
 </script>
