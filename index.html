@@ -366,22 +366,16 @@
                 ubicacion: ciudad,
                 articulo: prod,
                 fuente: "Landing Reducap"
-            })
-        });
-       .then((()=>{
-        })
-        })
+           }) // Cierra el cuerpo del fetch
         .then(() => {
-            // Esto asegura que el mensaje salga DESPUÉS de enviar los datos
-            alert(¡Gracias ${nombre}! Hemos recibido tu pedido para ${ciudad}.);
+            alert(`¡Gracias ${nombre}! Hemos recibido tu pedido para ${ciudad}.`);
             this.reset();
             formBox.classList.add('hidden');
         })
         .catch(error => {
-            // Por si hay un error en la conexión
             console.error('Error:', error);
             alert("Hubo un error al enviar. Intenta de nuevo.");
-    });
+        });
     });
 </script>
     <div id="social-contact-container">
