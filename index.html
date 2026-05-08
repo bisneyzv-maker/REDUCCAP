@@ -331,19 +331,19 @@
     const closeBtn = document.getElementById('close-form-btn');
     const formBox = document.getElementById('floating-form');
 
-    // 1. FUNCIÓN PARA ABRIR EL FORMULARIO
+    // 1. ABRIR EL FORMULARIO
     openBtn.addEventListener('click', () => {
         formBox.classList.remove('hidden');
         formBox.style.opacity = "1";
         formBox.style.transform = "translateY(0)";
     });
 
-    // 2. FUNCIÓN PARA CERRAR EL FORMULARIO
+    // 2. CERRAR EL FORMULARIO
     closeBtn.addEventListener('click', () => {
         formBox.classList.add('hidden');
     });
 
-    // 3. FUNCIÓN PARA ENVIAR LOS DATOS A N8N
+    // 3. ENVIAR DATOS A N8N
     document.getElementById('contact-form').addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -366,7 +366,7 @@
             })
         });
 
-        alert(¡Gracias ${nombre}! Hemos recibido tu pedido para ${ciudad}.);
+        alert(`¡Gracias ${nombre}! Hemos recibido tu pedido.`);
         this.reset();
         formBox.classList.add('hidden');
     });
