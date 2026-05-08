@@ -202,5 +202,166 @@
             window.open(`https://wa.me/${API_DATA.phone}?text=${m}`, '_blank');
         }
     </script>
+    <div id="float-form-container">
+    <button id="open-form-btn">
+        <span class="icon">💬</span> Pide tu asesoría gratuita
+    </button>
+
+    <div id="floating-form" class="hidden">
+        <div class="form-header">
+            <h3>Asesoría o Pedido</h3>
+            <button id="close-form-btn">&times;</button>
+        </div>
+        <form id="contact-form">
+            <div class="input-group">
+                <label>Nombre completo</label>
+                <input type="text" id="fname" name="firstname" placeholder="Tu nombre..." required>
+            </div>
+
+            <div class="input-group">
+                <label>WhatsApp</label>
+                <input type="tel" id="whatsapp" name="whatsapp" placeholder="Ej: +57 300..." required>
+            </div>
+
+            <div class="input-group">
+                <label>Ciudad</label>
+                <input type="text" id="city" name="city" placeholder="Ciudad de entrega" required>
+            </div>
+
+            <div class="input-group">
+                <label>Producto de interés</label>
+                <select id="product" name="product">
+                    <option value="reducap-classic">Reducap Classic</option>
+                    <option value="reducap-premium">Reducap Premium</option>
+                    <option value="otro">Otro / Consulta general</option>
+                </select>
+            </div>
+
+            <button type="submit" id="submit-btn">Enviar pedido contra entrega</button>
+        </form>
+    </div>
+</div>
+
+<style>
+    /* Estilos del Contenedor */
+    #float-form-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+        font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    /* Botón Flotante */
+    #open-form-btn {
+        background-color: #25d366; /* Verde WhatsApp */
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: bold;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: transform 0.3s ease;
+    }
+
+    #open-form-btn:hover { transform: scale(1.05); }
+
+    /* Caja del Formulario */
+    #floating-form {
+        position: absolute;
+        bottom: 70px;
+        right: 0;
+        width: 300px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .hidden { display: none; opacity: 0; transform: translateY(20px); }
+
+    /* Encabezado del Form */
+    .form-header {
+        background: #2c3e50;
+        color: white;
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .form-header h3 { margin: 0; font-size: 16px; }
+
+    #close-form-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    /* Campos de entrada */
+    #contact-form { padding: 20px; }
+    .input-group { margin-bottom: 15px; }
+    .input-group label { display: block; font-size: 12px; margin-bottom: 5px; color: #666; }
+    .input-group input, .input-group select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        box-sizing: border-box;
+    }
+
+    /* Botón Enviar */
+    #submit-btn {
+        width: 100%;
+        background: #e74c3c; /* Color llamativo para pedidos */
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    #submit-btn:hover { background: #c0392b; }
+</style>
+
+<script>
+    const openBtn = document.getElementById('open-form-btn');
+    const closeBtn = document.getElementById('close-form-btn');
+    const formBox = document.getElementById('floating-form');
+
+    // Abrir y cerrar
+    openBtn.addEventListener('click', () => {
+        formBox.classList.toggle('hidden');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        formBox.classList.add('hidden');
+    });
+
+    // Acción al enviar
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Aquí puedes conectar esto con n8n o recibirlo por WhatsApp
+        const nombre = document.getElementById('fname').value;
+        const phone = document.getElementById('whatsapp').value;
+        const ciudad = document.getElementById('city').value;
+        const prod = document.getElementById('product').value;
+
+        alert(`¡Gracias ${nombre}! Hemos recibido tu pedido para ${ciudad}. Nos contactaremos al ${phone}.`);
+        
+        // Limpiar y cerrar
+        this.reset();
+        formBox.classList.add('hidden');
+    });
+</script>
 </body>
 </html>
