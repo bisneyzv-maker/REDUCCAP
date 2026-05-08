@@ -356,5 +356,53 @@
         formBox.classList.add('hidden');
     });
 </script>
+    <div id="social-contact-container">
+    <a href="https://wa.me/573000000000" class="social-btn whatsapp-btn" target="_blank" title="Escríbenos por WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+
+    <a href="https://t.me/TuUsuario" class="social-btn telegram-btn" target="_blank" title="Contáctanos por Telegram">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+    </a>
+</div>
+
+<style>
+    /* Contenedor de botones (ubicado arriba del formulario) */
+    #social-contact-container {
+        position: fixed;
+        bottom: 85px; /* Ajustado para que no tape el botón de asesoría */
+        right: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 9998;
+    }
+
+    /* Estilo general de los botones circulares */
+    .social-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .social-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    }
+
+    .social-btn img {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* Colores oficiales */
+    .whatsapp-btn { background-color: #25d366; }
+    .telegram-btn { background-color: #0088cc; }
+</style>
 </body>
 </html>
