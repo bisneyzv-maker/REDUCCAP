@@ -343,19 +343,40 @@
         formBox.classList.add('hidden');
     });
 
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
+   document.getElementById('contact-form').addEventListener('submit', function(e) {
         e.preventDefault();
+        
         const nombre = document.getElementById('fname').value;
         const phone = document.getElementById('whatsapp').value;
         const ciudad = document.getElementById('city').value;
         const prod = document.getElementById('product').value;
 
-              // 1. Solo confirmamos al usuario que recibimos todo
-        alert(¡Gracias ${nombre}! Hemos recibido tu interés en ${prod}. Pronto nos comunicaremos al ${phone}.);
+        // URL de tu Webhook de n8n (tomada de tu imagen)
+        const webhookUrl = "https://automatizaciones-n8n.qtnnm3.easypanel.host/webhook-test/43a3956f-e206-4dfb-8f5b-1afb924a0956";
+
+        // Enviando los datos a n8n de forma invisible
+        fetch(webhookUrl, {
+            method: 'POST',
+            mode: 'no-cors', // Para evitar problemas de permisos iniciales
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                cliente: nombre,
+                telefono: phone,
+                ubicacion: ciudad,
+                articulo: prod,
+                fuente: "Landing Reducap"
+            })
+        });
+
+        // Mensaje para el cliente
+        alert(¡Gracias ${nombre}! Hemos recibido tu pedido para ${ciudad}. Nos contactaremos al ${phone} pronto.);
         
-        // 2. Aquí es donde n8n hará su magia más adelante (el envío invisible)
+        // Limpiar y cerrar el formulario
         this.reset();
         formBox.classList.add('hidden');
+    });
     });
 </script>
     <div id="social-contact-container">
