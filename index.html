@@ -331,29 +331,19 @@
     const closeBtn = document.getElementById('close-form-btn');
     const formBox = document.getElementById('floating-form');
 
+    // 1. FUNCIÓN PARA ABRIR EL FORMULARIO
     openBtn.addEventListener('click', () => {
-        formBox.classList.toggle('hidden');
-        if (!formBox.classList.contains('hidden')) {
-            formBox.style.opacity = "1";
-            formBox.style.transform = "translateY(0)";
-        }
+        formBox.classList.remove('hidden');
+        formBox.style.opacity = "1";
+        formBox.style.transform = "translateY(0)";
     });
 
+    // 2. FUNCIÓN PARA CERRAR EL FORMULARIO
     closeBtn.addEventListener('click', () => {
         formBox.classList.add('hidden');
     });
 
-  // Abrir formulario
-    openBtn.addEventListener('click', () => {
-        formBox.classList.toggle('hidden');
-    });
-
-    // Cerrar formulario
-    closeBtn.addEventListener('click', () => {
-        formBox.classList.add('hidden');
-    });
-
-    // Enviar datos a n8n
+    // 3. FUNCIÓN PARA ENVIAR LOS DATOS A N8N
     document.getElementById('contact-form').addEventListener('submit', function(e) {
         e.preventDefault();
         
