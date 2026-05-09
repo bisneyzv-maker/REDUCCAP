@@ -327,56 +327,57 @@
 </style>
 
 <script>
-    const openBtn = document.getElementById('open-form-btn');
-    const closeBtn = document.getElementById('close-form-btn');
-    const formBox = document.getElementById('floating-form');
-    const contactForm = document.getElementById('contact-form');
+(function() {
+    // Definimos los elementos con nombres únicos para evitar errores
+    const btnAbrir = document.getElementById('open-form-btn');
+    const btnCerrar = document.getElementById('close-form-btn');
+    const cajaForm = document.getElementById('floating-form');
+    const miFormulario = document.getElementById('contact-form');
 
-    // 1. Abrir formulario
-    openBtn.addEventListener('click', () => {
-        formBox.classList.remove('hidden');
-        formBox.style.opacity = "1";
-        formBox.style.transform = "translateY(0)";
-    });
-
-    // 2. Cerrar formulario
-    closeBtn.addEventListener('click', () => {
-        formBox.classList.add('hidden');
-    });
-
-    // 3. Enviar datos a n8n
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const nombre = document.getElementById('fname').value;
-        const phone = document.getElementById('whatsapp').value;
-        const ciudad = document.getElementById('city').value;
-        const prod = document.getElementById('product').value;
-
-        // USAREMOS LA URL DE TEST PARA VER EL RESULTADO EN PANTALLA
-        const webhookUrl = "https://automatizaciones-n8n.qtnnm3.easypanel.host/webhook-test/43a3956f-e206-4dfb-8f5b-1afb924a0956";
-
-        fetch(webhookUrl, {
-            method: 'POST',
-            mode: 'cors', 
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                cliente: nombre,
-                telefono: phone,
-                ubicacion: ciudad,
-                articulo: prod
-            })
-        })
-        .then(response => {
-            alert(¡Gracias ${nombre}! Hemos recibido tu pedido.);
-            contactForm.reset();
-            formBox.classList.add('hidden');
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert("Hubo un error al enviar el formulario.");
+    if (btnAbrir && cajaForm) {
+        // 1. Abrir
+        btnAbrir.addEventListener('click', () => {
+            cajaForm.classList.remove('hidden');
+            cajaForm.style.opacity = "1";
+            cajaForm.style.transform = "translateY(0)";
         });
-    });
+
+        // 2. Cerrar
+        btnCerrar.addEventListener('click', () => {
+            cajaForm.classList.add('hidden');
+        });
+
+        // 3. Enviar a n8n
+        miFormulario.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const datos = {
+                cliente: document.getElementById('fname').value,
+                telefono: document.getElementById('whatsapp').value,
+                ubicacion: document.getElementById('city').value,
+                articulo: document.getElementById('product').value
+            };
+
+            const urlProd = "https://automatizaciones-n8n.qtnnm3.easypanel.host/webhook/43a3956f-e206-4dfb-8f5b-1afb924a0956";
+
+            fetch(urlProd, {
+                method: 'POST',
+                mode: 'cors', 
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(datos)
+            })
+            .then(() => {
+                alert("¡Gracias! Hemos recibido tu pedido.");
+                miFormulario.reset();
+                cajaForm.classList.add('hidden');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Error al enviar. Revisa tu conexión.");
+            });
+        });
+    }
+})();
 </script>
     <div id="social-contact-container">
     <a href="https://wa.me/573052958963" class="social-btn whatsapp-btn" target="_blank" title="Escríbenos por WhatsApp">
