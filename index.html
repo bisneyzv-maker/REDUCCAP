@@ -355,8 +355,9 @@
         const webhookUrl = "https://automatizaciones-n8n.qtnnm3.easypanel.host/webhook/43a3956f-e206-4dfc-8f5b-1afb924a0956";
                             
 
-       fetch(webhookUrl, {
+      fetch(webhookUrl, {
             method: 'POST',
+            mode: 'cors', // Asegúrate de que diga 'cors' y no 'no-cors'
             headers: {
                 'Content-Type': 'application/json'
             },
