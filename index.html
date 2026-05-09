@@ -327,25 +327,24 @@
 </style>
 
 <script>
-    // 1. Definimos los elementos una sola vez
     const openBtn = document.getElementById('open-form-btn');
     const closeBtn = document.getElementById('close-form-btn');
     const formBox = document.getElementById('floating-form');
     const contactForm = document.getElementById('contact-form');
 
-    // 2. Función para ABRIR el formulario
+    // 1. Abrir formulario
     openBtn.addEventListener('click', () => {
         formBox.classList.remove('hidden');
         formBox.style.opacity = "1";
         formBox.style.transform = "translateY(0)";
     });
 
-    // 3. Función para CERRAR el formulario
+    // 2. Cerrar formulario
     closeBtn.addEventListener('click', () => {
         formBox.classList.add('hidden');
     });
 
-    // 4. Función para ENVIAR los datos
+    // 3. Enviar datos a n8n
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -354,10 +353,10 @@
         const ciudad = document.getElementById('city').value;
         const prod = document.getElementById('product').value;
 
-        // URL DE PRODUCCIÓN (Asegúrate que sea esta la que quieres usar)
-        const urlFinal = "https://automatizaciones-n8n.qtnnm3.easypanel.host/webhook/43a3956f-e206-4dfc-8f5b-1afb924a0956";
+        // USAREMOS LA URL DE TEST PARA VER EL RESULTADO EN PANTALLA
+        const webhookUrl = "https://automatizaciones-n8n.qtnnm3.easypanel.host/webhook-test/43a3956f-e206-4dfb-8f5b-1afb924a0956";
 
-        fetch(urlFinal, {
+        fetch(webhookUrl, {
             method: 'POST',
             mode: 'cors', 
             headers: { 'Content-Type': 'application/json' },
@@ -368,14 +367,14 @@
                 articulo: prod
             })
         })
-        .then(() => {
-            alert(`¡Gracias ${nombre}! Hemos recibido tu pedido.`);
+        .then(response => {
+            alert(¡Gracias ${nombre}! Hemos recibido tu pedido.);
             contactForm.reset();
             formBox.classList.add('hidden');
         })
         .catch(error => {
             console.error('Error:', error);
-            alert("Error al enviar. Intenta de nuevo.");
+            alert("Hubo un error al enviar el formulario.");
         });
     });
 </script>
