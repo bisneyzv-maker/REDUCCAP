@@ -355,22 +355,27 @@
         const webhookUrl = "https://automatizaciones-n8n.qtnnm3.easypanel.host/webhook/43a3956f-e206-4dfc-8f5b-1afb924a0956";
                             
 
-        fetch(webhookUrl, {
+       fetch(webhookUrl, {
             method: 'POST',
-            mode: 'cors', 
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({
                 cliente: nombre,
                 telefono: phone,
                 ubicacion: ciudad,
                 articulo: prod
             })
+        })
+        .then(() => {
+            alert(`¡Gracias ${nombre}! Hemos recibido tu pedido.`);
+            this.reset();
+            formBox.classList.add('hidden');
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("Hubo un error al enviar.");
         });
-
-        alert(`¡Gracias ${nombre}! Hemos recibido tu pedido.`);
-        this.reset();
-        formBox.classList.add('hidden');
-    });
 </script>
     <div id="social-contact-container">
     <a href="https://wa.me/573052958963" class="social-btn whatsapp-btn" target="_blank" title="Escríbenos por WhatsApp">
