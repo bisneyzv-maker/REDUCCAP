@@ -350,16 +350,22 @@
         // USAMOS WEBHOOK-TEST PARA ESTA PRUEBA FINAL
         const url = "https://automatizaciones-n8n.qtnnm3.easypanel.host/webhook-test/43a3956f-e206-4dfc-8f5b-1afb924a0956";
 
-        fetch(url, {
-            method: 'POST',
-            mode: 'no-cors', // Forzamos el envío aunque el navegador se queje
-            headers: { 'Content-Type': 'application/json' },
-           body: JSON.stringify({
-  cliente: document.getElementById("nombre_completo").value,
-  telefono: document.getElementById("whatsapp").value,
-  ubicacion: document.getElementById("ciudad").value,
-  articulo: document.getElementById("producto_interes").value
+   fetch(urlWebhook, {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(datosParaEnviar)
 })
+.then(response => {
+    if (response.ok) {
+        console.log("Envío exitoso");
+        // Aquí puedes poner un mensaje de éxito para el cliente
+    }
+})
+.catch(error => {
+    console.error("Error en el envío:", error);
+});
         .then(() => {
             alert("¡DATOS ENVIADOS! Revisa tu n8n ahora.");
             contactForm.reset();
