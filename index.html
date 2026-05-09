@@ -354,8 +354,12 @@
             method: 'POST',
             mode: 'no-cors', // Forzamos el envío aunque el navegador se queje
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-        })
+           body: JSON.stringify({
+  cliente: document.getElementById("nombre_completo").value,
+  telefono: document.getElementById("whatsapp").value,
+  ubicacion: document.getElementById("ciudad").value,
+  articulo: document.getElementById("producto_interes").value
+})
         .then(() => {
             alert("¡DATOS ENVIADOS! Revisa tu n8n ahora.");
             contactForm.reset();
