@@ -327,24 +327,26 @@
 </style>
 
 <script>
+    // 1. Definimos los elementos una sola vez
     const openBtn = document.getElementById('open-form-btn');
     const closeBtn = document.getElementById('close-form-btn');
     const formBox = document.getElementById('floating-form');
+    const contactForm = document.getElementById('contact-form');
 
-    // 1. ABRIR EL FORMULARIO
+    // 2. Función para ABRIR el formulario
     openBtn.addEventListener('click', () => {
         formBox.classList.remove('hidden');
         formBox.style.opacity = "1";
         formBox.style.transform = "translateY(0)";
     });
 
-    // 2. CERRAR EL FORMULARIO
+    // 3. Función para CERRAR el formulario
     closeBtn.addEventListener('click', () => {
         formBox.classList.add('hidden');
     });
 
-    // 3. ENVIAR DATOS A N8N
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
+    // 4. Función para ENVIAR los datos
+    contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
         const nombre = document.getElementById('fname').value;
@@ -352,15 +354,13 @@
         const ciudad = document.getElementById('city').value;
         const prod = document.getElementById('product').value;
 
-        const webhookUrl = "https://automatizaciones-n8n.qtnnm3.easypanel.host/webhook/43a3956f-e206-4dfc-8f5b-1afb924a0956";
-                            
+        // URL DE PRODUCCIÓN (Asegúrate que sea esta la que quieres usar)
+        const urlFinal = "https://automatizaciones-n8n.qtnnm3.easypanel.host/webhook/43a3956f-e206-4dfc-8f5b-1afb924a0956";
 
-      fetch(webhookUrl, {
+        fetch(urlFinal, {
             method: 'POST',
-            mode: 'cors', // Asegúrate de que diga 'cors' y no 'no-cors'
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            mode: 'cors', 
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 cliente: nombre,
                 telefono: phone,
@@ -370,13 +370,14 @@
         })
         .then(() => {
             alert(`¡Gracias ${nombre}! Hemos recibido tu pedido.`);
-            this.reset();
+            contactForm.reset();
             formBox.classList.add('hidden');
         })
         .catch(error => {
             console.error('Error:', error);
-            alert("Hubo un error al enviar.");
+            alert("Error al enviar. Intenta de nuevo.");
         });
+    });
 </script>
     <div id="social-contact-container">
     <a href="https://wa.me/573052958963" class="social-btn whatsapp-btn" target="_blank" title="Escríbenos por WhatsApp">
