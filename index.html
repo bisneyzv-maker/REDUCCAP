@@ -355,7 +355,7 @@
     headers: {
         "Content-Type": "application/json"
     },
-    body: JSON.stringify(datosParaEnviar)
+    body: JSON.stringify(payload) // <--- CAMBIA 'datosParaEnviar' POR 'payload'
 })
 .then(response => {
     if (response.ok) {
