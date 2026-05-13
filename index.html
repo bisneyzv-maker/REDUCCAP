@@ -355,21 +355,23 @@
 
         const urlWebhook = "https://automatizaciones-n8n.qtnnm3.easypanel.host/webhook-test/43a3956f-e206-4dfc-8f5b-1afb924a0956";
 
-        fetch(urlWebhook, {
-            method: 'POST',
-   
-            body: JSON.stringify(payload)
-        })
-        .then(response => {
-            // No verificamos response.ok porque n8n a veces devuelve vacíos en test
-            alert("¡DATOS ENVIADOS! Revisa tu n8n ahora.");
-            contactForm.reset();
-            formBox.classList.add('hidden');
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert("Error al enviar. Revisa la consola.");
-        });
+      fetch(urlWebhook, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+})
+.then(response => {
+    // Si n8n responde, limpiamos el formulario
+    alert("¡DATOS ENVIADOS! Revisa tu n8n ahora.");
+    contactForm.reset();
+    formBox.classList.add('hidden');
+})
+.catch(error => {
+    console.error('Error:', error);
+    alert("Error al enviar. Revisa la consola.");
+});
     });
 </script>
     <div id="social-contact-container">
