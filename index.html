@@ -212,33 +212,25 @@
             <h3>Asesoría o Pedido</h3>
             <button id="close-form-btn">&times;</button>
         </div>
-        <form id="contact-form">
-            <div class="input-group">
-                <label>Nombre completo</label>
-                <input type="text" id="fname" name="firstname" placeholder="Tu nombre..." required>
-            </div>
-
-            <div class="input-group">
-                <label>WhatsApp</label>
-                <input type="tel" id="whatsapp" name="whatsapp" placeholder="Ej: +57 300..." required>
-            </div>
-
-            <div class="input-group">
-                <label>Ciudad</label>
-                <input type="text" id="city" name="city" placeholder="Ciudad de entrega" required>
-            </div>
-
-            <div class="input-group">
-                <label>Producto de interés</label>
-                <select id="product" name="product">
-                    <option value="fibra-capilar">Fibra capilar</option>
-                    <option value="bunee">Bunee</option>
-                    <option value="chaleco-termico">Chaleco térmico</option>
-                </select>
-            </div>
-
-            <button type="submit" id="submit-btn">Enviar</button>
-        </form>
+       <iframe
+    src="https://apihl.thebettsai.com/widget/form/EtNpmoKBKHhCEBzzU5iR"
+    style="width:100%;height:100%;border:none;border-radius:8px"
+    id="inline-EtNpmoKBKHhCEBzzU5iR" 
+    data-layout="{'id':'INLINE'}"
+    data-trigger-type="alwaysShow"
+    data-trigger-value=""
+    data-activation-type="alwaysActivated"
+    data-activation-value=""
+    data-deactivation-type="neverDeactivate"
+    data-deactivation-value=""
+    data-form-name="Form 0"
+    data-height="526"
+    data-layout-iframe-id="inline-EtNpmoKBKHhCEBzzU5iR"
+    data-form-id="EtNpmoKBKHhCEBzzU5iR"
+    title="Form 0"
+        >
+</iframe>
+<script src="https://apihl.thebettsai.com/js/form_embed.js"></script>
     </div>
 </div>
 
@@ -342,38 +334,7 @@
         formBox.classList.add('hidden');
     });
 
-    // 3. Enviar datos a n8n
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const payload = {
-            cliente: document.getElementById('fname').value,
-            telefono: document.getElementById('whatsapp').value,
-            ubicacion: document.getElementById('city').value,
-            articulo: document.getElementById('product').value
-        };
-
-        const urlWebhook = "https://automatizaciones-n8n.qtnnm3.easypanel.host/webhook-test/43a3956f-e206-4dfc-8f5b-1afb924a0956";
-
-      fetch(urlWebhook, {
-    method: 'POST',
-          mode: 'cors',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(payload)
-})
-.then(response => {
-    // Si n8n responde, limpiamos el formulario
-    alert("¡DATOS ENVIADOS! Revisa tu n8n ahora.");
-    contactForm.reset();
-    formBox.classList.add('hidden');
-})
-.catch(error => {
-    console.error('Error:', error);
-    alert("Error al enviar. Revisa la consola.");
-});
-    });
+    
 </script>
     <div id="social-contact-container">
     <a href="https://wa.me/573052958963" class="social-btn whatsapp-btn" target="_blank" title="Escríbenos por WhatsApp">
